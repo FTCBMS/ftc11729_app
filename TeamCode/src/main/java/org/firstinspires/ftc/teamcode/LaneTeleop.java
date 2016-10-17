@@ -37,19 +37,19 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
 /**
- * This OpMode uses the common Pushbot hardware class to define the devices on the robot.
- * All device access is managed through the HardwarePushbot class.
- * The code is structured as a LinearOpMode
- *
- * This particular OpMode executes a POV Game style Teleop for a PushBot
- * In this mode the left stick moves the robot FWD and back, the Right stick turns left and right.
- * It raises and lowers the claw using the Gampad Y and A buttons respectively.
- * It also opens and closes the claws slowly using the left and right Bumper buttons.
- *
- * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
- * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
- */
 
+* This OpMode uses the common Pushbot hardware class to define the devices on the robot.
+        * All device access is managed through the HardwarePushbot class.
+        * The code is structured as a LinearOpMode
+        *
+        * This particular OpMode executes a POV Game style Teleop for a PushBot
+        * In this mode the left stick moves the robot FWD and back, the Right stick turns left and right.
+        * It raises and lowers the claw using the Gampad Y and A buttons respectively.
+        * It also opens and closes the claws slowly using the left and right Bumper buttons.
+        *
+        * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
+        * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
+        */
 @TeleOp(name="Pushbot: Teleop POV Lane", group="Pushbot")
 //@Disabled
 public class LaneTeleop extends LinearOpMode {
@@ -83,28 +83,28 @@ public class LaneTeleop extends LinearOpMode {
 
             // Run wheels in POV mode (note: The joystick goes negative when pushed forwards, so negate it)
             // In this mode the Left stick moves the robot fwd and back, the Right stick turns left and right.
-            left  = -gamepad1.left_stick_y + gamepad1.right_stick_x;
-            right = -gamepad1.left_stick_y - gamepad1.right_stick_x;
+            right = -gamepad1.left_stick_y;
+            left = -gamepad1.right_stick_y;
 
             // Normalize the values so neither exceed +/- 1.0
-            max = Math.max(Math.abs(left), Math.abs(right));
+           /* max = Math.max(Math.abs(left), Math.abs(right));
             if (max > 1.0)
             {
                 left /= max;
                 right /= max;
             }
-
+*/
             robot.leftMotor.setPower(left);
             robot.rightMotor.setPower(right);
 
             // Use gamepad left & right Bumpers to open and close the claw
-            if (gamepad1.right_bumper)
-                clawOffset += CLAW_SPEED;
-            else if (gamepad1.left_bumper)
-                clawOffset -= CLAW_SPEED;
+           // if (gamepad1.right_bumper)
+             //   clawOffset += CLAW_SPEED;
+            //else if (gamepad1.left_bumper)
+              //  clawOffset -= CLAW_SPEED;
 
             // Move both servos to new position.  Assume servos are mirror image of each other.
-            clawOffset = Range.clip(clawOffset, -0.5, 0.5);
+            //clawOffset = Range.clip(clawOffset, -0.5, 0.5);
             //robot.leftClaw.setPosition(robot.MID_SERVO + clawOffset);
             //robot.rightClaw.setPosition(robot.MID_SERVO - clawOffset);
 
@@ -117,7 +117,7 @@ public class LaneTeleop extends LinearOpMode {
                 //robot.armMotor.setPower(0.0);
 
             // Send telemetry message to signify robot running;
-            telemetry.addData("claw",  "Offset = %.2f", clawOffset);
+           // telemetry.addData("claw",  "Offset = %.2f", clawOffset);
             telemetry.addData("left",  "%.2f", left);
             telemetry.addData("right", "%.2f", right);
             telemetry.update();
