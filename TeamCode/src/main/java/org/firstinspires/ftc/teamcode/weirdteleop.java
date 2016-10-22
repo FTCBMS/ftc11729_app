@@ -111,7 +111,7 @@ public class weirdteleop extends OpMode{
         robot.leftMotor.setPower(left);
         robot.rightMotor.setPower(right);
         robot.leftMotor.setPower(backleft);
-        robot.leftMotor.setPower(backright)
+        robot.leftMotor.setPower(backright);
 
         // Use gamepad left & right Bumpers to open and close the claw
 
