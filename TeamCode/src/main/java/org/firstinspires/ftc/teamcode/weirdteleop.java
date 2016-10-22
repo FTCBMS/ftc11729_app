@@ -127,5 +127,7 @@ public class weirdteleop extends OpMode{
     /*
      * Code to run ONCE after the driver hits STOP
      */
-    public void stop();
+    public void stop() {
+
+    }
 }
