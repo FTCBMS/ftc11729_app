@@ -63,9 +63,9 @@ public class LaneTeleop extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-        double left;
-        double right;
-        double max;
+        //double left;
+        //double right;
+        //double max;
 
         /* Initialize the hardware variables.
          * The init() method of the hardware class does all the work here
@@ -84,8 +84,8 @@ public class LaneTeleop extends LinearOpMode {
 
             // Run wheels in POV mode (note: The joystick goes negative when pushed forwards, so negate it)
             // In this mode the Left stick moves the robot fwd and back, the Right stick turns left and right.
-            right = -gamepad1.right_stick_y;
-            left = -gamepad1.left_stick_y;
+            double right = gamepad1.right_stick_x;
+            double left = gamepad1.left_stick_y;
 
             // Normalize the values so neither exceed +/- 1.0
            /* max = Math.max(Math.abs(left), Math.abs(right));
@@ -95,8 +95,8 @@ public class LaneTeleop extends LinearOpMode {
                 right /= max;
             }
 */
-            robot.leftMotor.setPower(left);
-            robot.rightMotor.setPower(right);
+            robot.leftMotor.setPower(left+right);
+            robot.rightMotor.setPower(left-right);
 
             // Use gamepad left & right Bumpers to open and close the claw
            // if (gamepad1.right_bumper)
