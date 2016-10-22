@@ -97,21 +97,24 @@ public class weirdteleop extends OpMode{
      */
     @Override
     public void loop() {
-        double left;
-        double right;
+        boolean left;
+        boolean right;
         double backleft;
         double backright;
+        double leftPower =.7;
+        double rightPower =.7;
+        double backLPower = -.7;
+        double backRPower = -.7;
 
-
-        // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
+                // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
         left = gamepad1.left_bumper;
         right = gamepad1.right_bumper;
         backleft = gamepad1.left_trigger;
         backright = gamepad1.right_trigger;
-        robot.leftMotor.setPower(left);
-        robot.rightMotor.setPower(right);
-        robot.leftMotor.setPower(backleft);
-        robot.leftMotor.setPower(backright);
+        robot.leftMotor.setPower(0.7);
+        robot.rightMotor.setPower(0.7);
+        robot.leftMotor.setPower(backLPower);
+        robot.leftMotor.setPower(backRPower);
     }
 
         // Use gamepad left & right Bumpers to open and close the claw
