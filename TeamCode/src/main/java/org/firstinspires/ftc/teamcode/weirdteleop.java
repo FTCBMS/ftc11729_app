@@ -54,7 +54,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Pushbot: Teleop Tank", group="Pushbot")
+@TeleOp(name="movebott: Teleop weirdtank", group="movebot")
 //@Disabled
 public class weirdteleop extends OpMode{
 
@@ -106,12 +106,13 @@ public class weirdteleop extends OpMode{
         // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
         left = gamepad1.left_bumper;
         right = gamepad1.right_bumper;
-        backleft =  gamepad1.left_trigger;
+        backleft = gamepad1.left_trigger;
         backright = gamepad1.right_trigger;
         robot.leftMotor.setPower(left);
         robot.rightMotor.setPower(right);
         robot.leftMotor.setPower(backleft);
         robot.leftMotor.setPower(backright);
+    }
 
         // Use gamepad left & right Bumpers to open and close the claw
 
@@ -126,8 +127,5 @@ public class weirdteleop extends OpMode{
     /*
      * Code to run ONCE after the driver hits STOP
      */
-    @Override
-    public void stop() {
-    }
-
+    public void stop();
 }
