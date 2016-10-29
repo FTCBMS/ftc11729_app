@@ -46,10 +46,6 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
  * This OpMode uses the common Pushbot hardware class to define the devices on the robot.
  * All device access is managed through the HardwarePushbot class.
  *
- * This particular OpMode executes a basic Tank Drive Teleop for a PushBot
- * It raises and lowers the claw using the Gampad Y and A buttons respectively.
- * It also opens and closes the claws slowly using the left and right Bumper buttons.
- *
  * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
@@ -74,7 +70,7 @@ public class weirdteleop extends OpMode{
         robot.init(hardwareMap);
 
         // Send telemetry message to signify robot waiting;
-        telemetry.addData("Say", "Hello Driver");    //
+        telemetry.addData("Say", "you are running a weird code");    //
         updateTelemetry(telemetry);
     }
 
@@ -106,7 +102,6 @@ public class weirdteleop extends OpMode{
         double backLPower = -.7;
         double backRPower = -.7;
 
-                // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
         left = gamepad1.left_bumper;
         right = gamepad1.right_bumper;
         backleft = gamepad1.left_trigger;
@@ -117,13 +112,6 @@ public class weirdteleop extends OpMode{
         robot.leftMotor.setPower(backRPower);
     }
 
-        // Use gamepad left & right Bumpers to open and close the claw
-
-
-
-        // Move both servos to new position.  Assume servos are mirror image of each other.
-
-        // Use gamepad buttons to move the arm up (Y) and down (A)
 
         // Send telemetry message to signify robot running;
 
