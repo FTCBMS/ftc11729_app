@@ -34,7 +34,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.util.Range;
 
 /**
 
@@ -52,7 +51,7 @@ import com.qualcomm.robotcore.util.Range;
         */
 @TeleOp(name="Pushbot: Teleop POV Lane", group="Pushbot")
 //@Disabled
-public class LaneTeleop extends LinearOpMode {
+public class LaneTeleopTankMode extends LinearOpMode {
 
     /* Declare OpMode members. */
     LanePushbot robot           = new LanePushbot();   // Use a Pushbot's hardware
@@ -84,8 +83,8 @@ public class LaneTeleop extends LinearOpMode {
 
             // Run wheels in POV mode (note: The joystick goes negative when pushed forwards, so negate it)
             // In this mode the Left stick moves the robot fwd and back, the Right stick turns left and right.
-            double right = gamepad1.right_stick_x;
-            double left = gamepad1.left_stick_y;
+              double right = gamepad1.right_stick_y;
+             double left = gamepad1.left_stick_y;
 
             // Normalize the values so neither exceed +/- 1.0
            /* max = Math.max(Math.abs(left), Math.abs(right));
@@ -95,8 +94,8 @@ public class LaneTeleop extends LinearOpMode {
                 right /= max;
             }
 */
-            robot.leftMotor.setPower(left+right);
-            robot.rightMotor.setPower(left-right);
+            robot.leftMotor.setPower(right+right);
+            robot.rightMotor.setPower(left+left);
 
             // Use gamepad left & right Bumpers to open and close the claw
            // if (gamepad1.right_bumper)
