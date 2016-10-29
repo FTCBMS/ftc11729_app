@@ -70,7 +70,7 @@ public class weirdteleop extends OpMode{
         robot.init(hardwareMap);
 
         // Send telemetry message to signify robot waiting;
-        telemetry.addData("Say", "you are running a weird code");    //
+        telemetry.addData("Say", "you are running a weird code and if you are bored than do something else also if you want to know how to controll this its left and right bumper and triggrt it might trigger you but its a cool idea");    //
         updateTelemetry(telemetry);
     }
 
