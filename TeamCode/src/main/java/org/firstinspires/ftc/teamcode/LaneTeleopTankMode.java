@@ -49,7 +49,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
         * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
         * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
         */
-@TeleOp(name="Pushbot: Teleop POV Lane", group="Pushbot")
+@TeleOp(name="Pushbot: Teleop POV Ford", group="Pushbot")
 //@Disabled
 public class LaneTeleopTankMode extends LinearOpMode {
 
@@ -83,7 +83,7 @@ public class LaneTeleopTankMode extends LinearOpMode {
 
             // Run wheels in POV mode (note: The joystick goes negative when pushed forwards, so negate it)
             // In this mode the Left stick moves the robot fwd and back, the Right stick turns left and right.
-              double right = gamepad1.right_stick_y;
+            double right = gamepad1.right_stick_y;
              double left = gamepad1.left_stick_y;
 
             // Normalize the values so neither exceed +/- 1.0
@@ -94,8 +94,8 @@ public class LaneTeleopTankMode extends LinearOpMode {
                 right /= max;
             }
 */
-            robot.leftMotor.setPower(right+right);
-            robot.rightMotor.setPower(left+left);
+            robot.leftMotor.setPower(right);
+            robot.rightMotor.setPower(left);
 
             // Use gamepad left & right Bumpers to open and close the claw
            // if (gamepad1.right_bumper)
