@@ -35,6 +35,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
@@ -60,72 +61,28 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Pushbot Push Control: Auto Drive By Time", group="Pushbot")
+@TeleOp(name="Servo TeleOp", group="Pushbot")
 //@Disabled
 public class ServoPushControl extends LinearOpMode {
 
     /* Declare OpMode members. */
-    LanePushbot         robot   = new LanePushbot();   // Use a Pushbot's hardware
-    private ElapsedTime     runtime = new ElapsedTime();
-
-
-    static final double     FORWARD_SPEED = 0.6;
-    static final double     TURN_SPEED    = 0.5;
-
+    LanePushbot robot = new LanePushbot();   // Use a Pushbot's hardware
     @Override
     public void runOpMode() {
-
-        /*
-         * Initialize the drive system variables.
-         * The init() method of the hardware class does all the work here
-         */
         robot.init(hardwareMap);
-
-        // Send telemetry message to signify robot waiting;
+        robot.pushRight = hardwareMap.servo.get("servo");
         telemetry.addData("Status", "Ready to run");    //
         telemetry.update();
-
-        // Wait for the game to start (driver presses PLAY)
         waitForStart();
-
-        // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
-
-        // Step 1:  Drive forward for 3 seconds
-        robot.leftMotor.setPower(FORWARD_SPEED);
-        robot.rightMotor.setPower(FORWARD_SPEED);
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 3.0)) {
-       telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
-            telemetry.update();
+        while (opModeIsActive()) {
+            robot.pushRight.setPosition(gamepad1.right_trigger);
         }
-
-        // Step 2:  Spin right for 1.3 seconds
-        robot.leftMotor.setPower(TURN_SPEED);
-        robot.rightMotor.setPower(-TURN_SPEED);
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.3)) {
-            telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
-            telemetry.update();
-        }
-
-        // Step 3:  Drive Backwards for 1 Second
-        robot.leftMotor.setPower(-FORWARD_SPEED);
-        robot.rightMotor.setPower(-FORWARD_SPEED);
-        robot.lock.setPosition(0.25);
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
-            telemetry.addData("Path", "Leg 3: %2.5f S Elapsed", runtime.seconds());
-            telemetry.update();
-        }
-
-        // Step 4:  Stop and close the claw.
-        robot.leftMotor.setPower(0);
-        robot.rightMotor.setPower(0);
-        //robot.leftClaw.setPosition(1.0);
-        //robot.rightClaw.setPosition(0.0);
-
-        telemetry.addData("Path", "Complete");
-        telemetry.update();
-        sleep(1000);
-    }
+        stop();
+    }robot.init(hardwareMap);
+    robot.Balllifter = hardwareMap.servo 2.get("servo");
+    telemetry.("Status", "Ready to run");    //
+    telemetry.();
+    waitForStart();
+    while (opModeIsActive() {
+        robot.Ball_lifterl.setPosition(gamepad1.left_trigger);
 }
