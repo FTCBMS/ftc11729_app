@@ -32,13 +32,8 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.util.ElapsedTime;
-
-import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
 
 /**
  * This file illustrates the concept of driving a path based on time.
@@ -67,6 +62,7 @@ public class ServoPushControl extends LinearOpMode {
 
     /* Declare OpMode members. */
     LanePushbot robot = new LanePushbot();   // Use a Pushbot's hardware
+
     @Override
     public void runOpMode() {
         robot.init(hardwareMap);
@@ -76,13 +72,10 @@ public class ServoPushControl extends LinearOpMode {
         waitForStart();
         while (opModeIsActive()) {
             robot.pushRight.setPosition(gamepad1.right_trigger);
+            robot.ballLifter.setPosition(gamepad1.left_trigger);
         }
         stop();
-    }robot.init(hardwareMap);
-    robot.Balllifter = hardwareMap.servo 2.get("servo");
-    telemetry.("Status", "Ready to run");    //
-    telemetry.();
-    waitForStart();
-    while (opModeIsActive() {
-        robot.Ball_lifterl.setPosition(gamepad1.left_trigger);
+
+
+    }
 }

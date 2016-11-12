@@ -26,9 +26,10 @@ public class LanePushbot
     /* Public OpMode members. */
     public DcMotor  leftMotor   = null;
     public DcMotor  rightMotor  = null;
-    public DcMotor  armMotor    = null;
+    public DcMotor  sweeperMotor    = null;
+    public DcMotor  catapultMotor= null;
     public Servo    pushRight   = null;
-    public Servo    Balllifter    = null;
+    public Servo    ballLifter  = null;
     public static final double MID_SERVO       =  0.5 ;
     public static final double ARM_UP_POWER    =  0.45 ;
     public static final double ARM_DOWN_POWER  = -0.45 ;
@@ -50,10 +51,15 @@ public class LanePushbot
         // Define and Initialize Motors
         leftMotor   = hwMap.dcMotor.get("left_drive");
         rightMotor  = hwMap.dcMotor.get("right_drive");
+        sweeperMotor = hwMap.dcMotor.get("sweeper");
+        catapultMotor = hwMap.dcMotor.get("catapult");
+
         //armMotor    = hwMap.dcMotor.get("left_arm");
-        pushRight   = hwMap.servo.get("pusher");
-        leftMotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
-        rightMotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
+       // pushRight   = hwMap.servo.get("pusher");
+        //rightMotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
+        //leftMotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
+        leftMotor.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
+        rightMotor.setDirection(DcMotor.Direction.FORWARD);// Set to FORWARD if using AndyMark motors
 
         // Set all motors to zero power
         leftMotor.setPower(0);
@@ -73,6 +79,15 @@ public class LanePushbot
        //rightClaw = hwMap.servo.get("right_hand");
         //leftClaw.setPosition(MID_SERVO);
         //rightClaw.setPosition(MID_SERVO);
+        pushRight   = hwMap.servo.get("pusher");
+        ballLifter = hwMap.servo.get("lifter");
+
+        pushRight.scaleRange(0.05, 0.5);
+        ballLifter.scaleRange(0.05, 2.0 / 3);
+        pushRight.setPosition(1);
+        ballLifter.setPosition(0);
+
+
     }
 
     /***

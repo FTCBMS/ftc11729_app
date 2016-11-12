@@ -108,8 +108,8 @@ public class LaneProgramming extends LinearOpMode {
         }
 
         // Step 3:  Drive Backwards for 1 Second
-        robot.leftMotor.setPower(-FORWARD_SPEED);
-        robot.rightMotor.setPower(-FORWARD_SPEED);
+        robot.leftMotor.setPower(FORWARD_SPEED);
+        robot.rightMotor.setPower(FORWARD_SPEED);
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 1.0)) {
             telemetry.addData("Path", "Leg 3: %2.5f S Elapsed", runtime.seconds());
