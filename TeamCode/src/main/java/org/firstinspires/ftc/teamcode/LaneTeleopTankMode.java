@@ -97,14 +97,14 @@ public class LaneTeleopTankMode extends LinearOpMode {
             robot.leftMotor.setPower(left);
             robot.rightMotor.setPower(right);
             robot.sweeperMotor.setPower(gamepad1.left_trigger * (gamepad1.left_bumper ? -1 : 1));
-            robot.catapultMotor.setPower(gamepad1.b ? 1 : 0);
+            robot.catapultMotor.setPower(gamepad2.b ? 1 : 0);
             telemetry.addData("left",  "%.2f", left);
             telemetry.addData("right", "%.2f", right);
-            robot.pushRight.setPosition(1 - gamepad1.right_trigger);
-            robot.ballLifter.setPosition(gamepad1.right_bumper ? 1 : 0);
+            robot.pushRight.setPosition(1 - gamepad2.right_trigger);
+            robot.ballLifter.setPosition(gamepad2.right_bumper ? 1 : 0);
 
-            telemetry.addData("Right Trigger", gamepad1.right_trigger);
-            telemetry.addData("Left Trigger", gamepad1.left_trigger);
+            telemetry.addData("Right Trigger", gamepad2.right_trigger);
+            telemetry.addData("Left Trigger", gamepad2.left_trigger);
             telemetry.update();
 
             // Pause for metronome tick.  40 mS each cycle = update 25 times a second.
