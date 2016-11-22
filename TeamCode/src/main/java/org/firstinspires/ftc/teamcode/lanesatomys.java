@@ -88,13 +88,47 @@ public class lanesatomys extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
+        // In Autonomous
+        // Put at angle to head in fort of ramp
+        // than go forward throws ball into center vortex
+        // than turn and
+        // hit cap ball and parks on under the center vortex
 
+        // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
+        robot.leftMotor.setPower(FORWARD_SPEED);
+        robot.rightMotor.setPower(FORWARD_SPEED);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < .75 )) {
+            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+        
+        robot.catapultMotor.setPower(FORWARD_SPEED);
+        sleep(500);
+        robot.catapultMotor.setPower(0);
+
+
+        robot.catapultMotor.setPower(-FORWARD_SPEED);
+        sleep(500);
+        robot.catapultMotor.setPower(0);
+
+
+        robot.catapultMotor.setPower(FORWARD_SPEED);
+        sleep(500);
+        robot.catapultMotor.setPower(0);
+
+        robot.leftMotor.setPower(-TURN_SPEED);
+        robot.rightMotor.setPower(TURN_SPEED);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 1.9 )) {
+            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
         // Step 1:  Drive forward for 3 seconds
         robot.leftMotor.setPower(FORWARD_SPEED);
         robot.rightMotor.setPower(FORWARD_SPEED);
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.5)) {
+        while (opModeIsActive() && (runtime.seconds() < 1.5 )) {
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
@@ -104,10 +138,17 @@ public class lanesatomys extends LinearOpMode {
         robot.leftMotor.setPower(TURN_SPEED);
         robot.rightMotor.setPower(-TURN_SPEED);
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < .5 )) {
+        while (opModeIsActive() && (runtime.seconds() < .2 )) {
             telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
 
+        robot.leftMotor.setPower(-TURN_SPEED);
+        robot.rightMotor.setPower(TURN_SPEED);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < .75 )) {
+            telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
     }
 }
