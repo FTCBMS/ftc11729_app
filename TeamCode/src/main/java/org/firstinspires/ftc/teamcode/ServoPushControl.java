@@ -71,8 +71,8 @@ public class ServoPushControl extends LinearOpMode {
         telemetry.update();
         waitForStart();
         while (opModeIsActive()) {
-            robot.pushRight.setPosition(gamepad1.right_trigger);
-            robot.ballLifter.setPosition(gamepad1.left_trigger);
+            robot.pushRight.setPosition(gamepad2.right_trigger);
+            robot.ballLifter.setPosition(gamepad2.left_trigger);
         }
         stop();
 
