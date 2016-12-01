@@ -34,7 +34,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
+import com.qualcomm.robotcore.hardware.Servo;
 /**
 
 * This OpMode uses the common Pushbot hardware class to define the devices on the robot.
@@ -54,15 +54,14 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 public class LaneTeleopTankMode extends LinearOpMode {
 
     /* Declare OpMode members. */
-    LanePushbot robot           = new LanePushbot();   // Use a Pushbot's hardware
-                                                               // could also use HardwarePushbotMatrix class.
-    double          clawOffset      = 0;                       // Servo mid position
-    final double    CLAW_SPEED      = 0.02 ;                   // sets rate to move servo
-
+    LanePushbot robot = new LanePushbot();   // Use a Pushbot's hardware
+    // could also use HardwarePushbotMatrix class.
+    double clawOffset = 0;                       // Servo mid position
+    final double CLAW_SPEED = 0.02;                   // sets rate to move servo
 
     @Override
     public void runOpMode() {
-        //double left;
+        //double left
         //double right;
         //double max;
 
@@ -72,7 +71,7 @@ public class LaneTeleopTankMode extends LinearOpMode {
         robot.init(hardwareMap);
 
         // Send telemetry message to signify robot waiting;
-        telemetry.addData("Say", "Hello Driver Lane");    //
+        telemetry.addData("Say", "Hello Driver Lane and Jake");    //
         telemetry.update();
 
         // Wait for the game to start (driver presses PLAY)
@@ -84,7 +83,7 @@ public class LaneTeleopTankMode extends LinearOpMode {
             // Run wheels in POV mode (note: The joystick goes negative when pushed forwards, so negate it)
             // In this mode the Left stick moves the robot fwd and back, the Right stick turns left and right.
             double right = -gamepad1.right_stick_y;
-            double left  = -gamepad1.left_stick_y;
+            double left = -gamepad1.left_stick_y;
 
             // Normalize the values so neither exceed +/- 1.0
            /* max = Math.max(Math.abs(left), Math.abs(right));
@@ -94,21 +93,47 @@ public class LaneTeleopTankMode extends LinearOpMode {
                 right /= max;
             }
 */
-            robot.leftMotor.setPower(left);
-            robot.rightMotor.setPower(right);
-            robot.sweeperMotor.setPower(gamepad1.left_trigger * (gamepad1.left_bumper ? -1 : 1));
-            robot.catapultMotor.setPower(gamepad2.b ? 1 : 0);
-            telemetry.addData("left",  "%.2f", left);
-            telemetry.addData("right", "%.2f", right);
-            robot.pushRight.setPosition(1 - gamepad2.right_trigger);
-            robot.ballLifter.setPosition(gamepad2.right_bumper ? 1 : 0);
+            if (gamepad1.left_trigger == 1) {
+                if (gamepad1.right_trigger == 1) {
+                    robot.sweeperMotor.setPower(1);
+                } else {
+                    robot.sweeperMotor.setPower(-1);
+                }
+            }
+            if (gamepad1.left_trigger == 0) {
+                robot.sweeperMotor.setPower(0);
+            }
+            if (gamepad2.left_trigger == 1) {
+                robot.pushRight.setPosition(0);
+            } else if (gamepad2.left_trigger == 0) {
+                robot.pushRight.setPosition(1);
+            }
+            if (gamepad2.right_trigger == 1) {
+                robot.ballLifter.setPosition(1);
+            } else if (gamepad2.right_trigger == 0) {
+                robot.ballLifter.setPosition(0);
+            }
 
-            telemetry.addData("Right Trigger", gamepad2.right_trigger);
-            telemetry.addData("Left Trigger", gamepad2.left_trigger);
-            telemetry.update();
+                robot.leftMotor.setPower(left);
+                robot.rightMotor.setPower(right);
+                //robot.sweeperMotor.setPower(gamepad1.left_trigger * (gamepad1.left_bumper ? -1 : 1));
+                robot.catapultMotor.setPower(gamepad2.b ? 1 : 0);
+                telemetry.addData("left", "%.2f", left);
+                telemetry.addData("right", "%.2f", right);
+                telemetry.addData("Right Trigger", gamepad2.right_trigger);
+                telemetry.addData("Left Trigger", gamepad2.left_trigger);
+                telemetry.update();
 
-            // Pause for metronome tick.  40 mS each cycle = update 25 times a second.
-            robot.waitForTick(40);
+                // Pause for metronome tick.  40 mS each cycle = update 25 times a second.
+                robot.waitForTick(40);
+            }
         }
     }
-}
+
+
+
+
+
+
+
+
