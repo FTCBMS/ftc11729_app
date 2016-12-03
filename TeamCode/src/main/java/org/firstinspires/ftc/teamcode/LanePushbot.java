@@ -55,7 +55,8 @@ public class LanePushbot
         catapultMotor = hwMap.dcMotor.get("catapult");
 
         //armMotor    = hwMap.dcMotor.get("left_arm");
-       // pushRight   = hwMap.servo.get("pusher");
+      //  pushRight   = hwMap.servo.get("pusher");
+      //  pushRight   = hwMap.servo.get("lifter");
         //rightMotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
         //leftMotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
         leftMotor.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
