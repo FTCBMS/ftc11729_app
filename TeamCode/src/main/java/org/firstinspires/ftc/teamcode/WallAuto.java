@@ -88,65 +88,25 @@ public class WallAuto extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        // In Autonomous
-        // Put staright
-        // than shoots ball
-        // than turn and heads to center vortex
-        // hit cap ball and parks on under the center vortex
-        // if putin at right angle gives 15 points in Autonomous less than 20 sec.
-
-        robot.catapultMotor.setPower(FORWARD_SPEED);
-        sleep(500);
-        robot.catapultMotor.setPower(0);
-
-        robot.leftMotor.setPower(-TURN_SPEED);
-        robot.rightMotor.setPower(TURN_SPEED);
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.50)) {
-            telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
-            telemetry.update();
-        }
-
         robot.leftMotor.setPower(FORWARD_SPEED);
         robot.rightMotor.setPower(FORWARD_SPEED);
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.5)) {
-            telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
-            telemetry.update();
-        }
-
-
-        // Step 2:  Spin right for 1.3 seconds
-        robot.leftMotor.setPower(TURN_SPEED);
-        robot.rightMotor.setPower(-TURN_SPEED);
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < .99)) {
-            telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
-            telemetry.update();
-        }
-
-        robot.leftMotor.setPower(-FORWARD_SPEED);
-        robot.rightMotor.setPower(-FORWARD_SPEED);
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < .75)) {
             telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
-        }
 
-            robot.leftMotor.setPower(-TURN_SPEED);
-            robot.rightMotor.setPower(TURN_SPEED);
-            runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < .2 )) {
-                telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
-                telemetry.update();
+            robot.catapultMotor.setPower(FORWARD_SPEED);
+            sleep(500);
+            robot.catapultMotor.setPower(0);
 
-            }
             robot.leftMotor.setPower(FORWARD_SPEED);
             robot.rightMotor.setPower(FORWARD_SPEED);
             runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < .9 )) {
+            while (opModeIsActive() && (runtime.seconds() < 1.4)) {
                 telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
                 telemetry.update();
+
             }
         }
     }
+}

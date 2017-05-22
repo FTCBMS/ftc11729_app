@@ -103,6 +103,8 @@ public class LaneTeleopTankMode extends LinearOpMode {
             if (gamepad1.left_trigger == 0) {
                 robot.sweeperMotor.setPower(0);
             }
+
+
             if (gamepad2.left_trigger == 1) {
                 robot.pushRight.setPosition(0);
             } else if (gamepad2.left_trigger == 0) {
@@ -113,6 +115,8 @@ public class LaneTeleopTankMode extends LinearOpMode {
             } else if (gamepad2.right_trigger == 0) {
                 robot.ballLifter.setPosition(0);
             }
+
+
 
                 robot.leftMotor.setPower(left);
                 robot.rightMotor.setPower(right);
